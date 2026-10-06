@@ -11,13 +11,13 @@ const IMAGES = {
 };
 
 const CONFIG = {
-  girlfriendName: "My Love",            // 4️⃣ HER NAME (change this!)
+  girlfriendName: "FAITH ANDREA DUQUE",            // 4️⃣ HER NAME (change this!)
   password: "031424",                   // 3️⃣ THE PASSWORD
 
-  lockTitle:   "Hi {name} 💖",          // {name} is replaced with her name
+  lockTitle:   "Hi Mal💖",          // {name} is replaced with her name
   lockPrompt:  "Enter the secret password 💕",
   unlockText:  "Unlock ❤️",
-  wrongText:   "Hmm… 🤨",               // shown on a wrong password
+  wrongText:   "Hmm… abaaaa!!🤨",               // shown on a wrong password
 
   question:    "Are you really my girlfriend? ❤️",
   yesText:     "YES ❤️",
@@ -37,7 +37,7 @@ const CONFIG = {
 
   yesTitle:    "I KNEW IT! ❤️😭",
   // 5️⃣ THE FINAL ROMANTIC MESSAGE
-  finalMessage: "I love you so much, and I'm really happy you're mine. ❤️",
+  finalMessage: "I love you so much, and I'm really happy you're mine ror hope nagustuhan mo simple website na to whehe. ❤️",
 
   sound: true                           // little chime when she taps YES
 };
