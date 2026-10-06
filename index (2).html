@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For you 💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="hearts"></div>
+
+<!-- LOADING -->
+<section id="loading" class="screen active"><div class="stack">
+  <img class="loader" data-img="heart" alt="">
+  <p>Loading something cute…</p>
+</div></section>
+
+<!-- PASSWORD SCREEN -->
+<section id="lock" class="screen"><div class="stack">
+  <div class="photo-wrap"><img id="lockPhoto" class="photo" data-img="main" alt="Cute surprise"></div>
+  <h2 id="lockTitle"></h2>
+  <p id="lockPrompt" class="sub"></p>
+  <input id="pw" type="password" inputmode="numeric" autocomplete="off" placeholder="• • • • • •">
+  <button id="unlock" class="btn yes"></button>
+  <div id="toast" class="toast"></div>
+</div></section>
+
+<!-- MAIN QUESTION -->
+<section id="ask" class="screen"><div class="stack">
+  <div class="photo-wrap"><img class="photo" data-img="main" alt="Cute surprise"></div>
+  <h1 id="question"></h1>
+  <div class="btns">
+    <button id="yesBtn" class="btn yes"></button>
+    <span id="noSlot" class="no-slot"><button id="noBtn" class="btn no"></button></span>
+  </div>
+  <p id="noMsg" class="sub"></p>
+</div></section>
+
+<!-- CELEBRATION -->
+<section id="yes" class="screen"><div class="stack">
+  <div class="photo-wrap"><img class="photo" data-img="celebration" alt="Us"></div>
+  <h1 id="yesTitle" class="beat-text"></h1>
+  <p id="finalMsg" class="final"></p>
+</div></section>
+
+<script src="script.js"></script>
+</body>
+</html>

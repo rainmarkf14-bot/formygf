@@ -1,0 +1,73 @@
+/* Colors: change these to restyle everything */
+:root{--deep:#e63e7b;--ink:#7a2c4c;--bg1:#ffe6ef;--bg2:#efe3ff;--bg3:#ffe9d6}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0;overflow:hidden;overscroll-behavior:none;touch-action:manipulation}
+body{font-family:'Fredoka','Quicksand',system-ui,-apple-system,sans-serif;color:var(--ink);
+  background:linear-gradient(160deg,var(--bg1),var(--bg2),var(--bg3));background-size:300% 300%;
+  animation:bg 14s ease-in-out infinite;transition:filter 1s}
+body.celebrate{--bg1:#ffc2d9;--bg2:#ffd9ec;--bg3:#ffe6a8}
+@keyframes bg{0%,100%{background-position:0 0}50%{background-position:100% 100%}}
+
+/* screens (no transform on .screen so the fixed NO button stays viewport-based) */
+.screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+  padding:max(16px,env(safe-area-inset-top)) 20px max(16px,env(safe-area-inset-bottom));
+  text-align:center;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility .6s;z-index:5}
+.screen.active{opacity:1;visibility:visible}
+.stack{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:420px}
+.screen.active .stack{animation:pop .8s cubic-bezier(.34,1.56,.64,1) backwards}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.92)}}
+
+/* photo: float + tilt + heartbeat, glow behind */
+.photo-wrap{position:relative;animation:floaty 5s ease-in-out infinite}
+.photo-wrap::before{content:"";position:absolute;inset:-14px;border-radius:40px;
+  background:radial-gradient(circle,rgba(255,110,160,.55),transparent 70%);filter:blur(10px);
+  animation:glow 1.6s ease-in-out infinite;z-index:-1}
+.photo-wrap::after{content:"✨";position:absolute;right:-10px;top:-12px;font-size:1.6rem;animation:twinkle 2s ease-in-out infinite}
+.photo{display:block;width:min(66vw,250px);max-height:36dvh;object-fit:contain;background:#fff;
+  border:5px solid #fff;border-radius:28px;box-shadow:0 12px 30px rgba(230,62,123,.28)}
+.photo.react{animation:wiggle .8s ease-in-out}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-2deg) scale(1)}25%{transform:translateY(-8px) rotate(0) scale(1.03)}
+  50%{transform:translateY(-14px) rotate(2deg) scale(1)}75%{transform:translateY(-6px) rotate(0) scale(1.03)}}
+@keyframes glow{0%,100%{opacity:.5;transform:scale(.96)}50%{opacity:1;transform:scale(1.06)}}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.6) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(20deg)}}
+@keyframes wiggle{0%,100%{transform:rotate(0)}15%{transform:translateX(-12px) rotate(-8deg)}30%{transform:translateX(12px) rotate(8deg)}
+  45%{transform:translateX(-9px) rotate(-5deg)}60%{transform:translateX(9px) rotate(5deg)}80%{transform:translateX(-3px) rotate(-2deg)}}
+
+h1{font-size:clamp(1.7rem,8vw,2.4rem);line-height:1.15;margin:4px 0;text-shadow:0 2px 0 #fff}
+h2{font-size:clamp(1.4rem,6.5vw,1.9rem);margin:2px 0}
+.sub{margin:0;font-size:1.1rem;min-height:1.5em}
+.final{font-size:1.25rem;line-height:1.5;margin:0;background:rgba(255,255,255,.7);padding:16px 18px;border-radius:24px;box-shadow:0 8px 24px rgba(230,62,123,.18)}
+.beat-text{animation:beat 1.3s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.1)}30%{transform:scale(1)}45%{transform:scale(1.07)}}
+
+input{font:inherit;font-size:1.3rem;text-align:center;letter-spacing:.3em;width:min(80vw,280px);padding:14px;
+  border:3px solid #ffc1d6;border-radius:999px;background:#fff;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}
+input:focus{border-color:#ff6b9c;box-shadow:0 0 0 5px rgba(255,107,156,.25)}
+input.bad{animation:wiggle .6s}
+
+.btn{font:inherit;font-size:1.25rem;font-weight:600;border:0;border-radius:999px;padding:14px 30px;min-height:56px;
+  cursor:pointer;transition:transform .2s,box-shadow .2s;touch-action:manipulation}
+.yes{color:#fff;background:linear-gradient(135deg,#ff7aa8,#ff3d7f);box-shadow:0 8px 20px rgba(255,61,127,.4)}
+.yes:hover{transform:scale(1.07)}.yes:active{transform:scale(.95)}
+#yesBtn{animation:beat 1.6s ease-in-out infinite}
+.btns{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:6px}
+.no{color:#c2557d;background:#fff;border:2px solid #ffc1d6;box-shadow:0 6px 16px rgba(194,85,125,.2)}
+.no-slot{display:inline-block}
+.no.escaped{position:fixed;z-index:30;margin:0;
+  transition:left .55s cubic-bezier(.34,1.56,.64,1),top .55s cubic-bezier(.34,1.56,.64,1),transform .55s cubic-bezier(.34,1.56,.64,1)}
+
+.toast{position:absolute;bottom:-10px;left:50%;transform:translate(-50%,10px);opacity:0;background:#fff;color:var(--deep);
+  padding:8px 16px;border-radius:999px;font-weight:500;box-shadow:0 6px 16px rgba(230,62,123,.25);transition:.3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.stack{position:relative}
+
+.loader{width:90px;animation:beat 1s ease-in-out infinite}
+
+/* floating hearts + confetti */
+#hearts,.conf-layer{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+#hearts{z-index:1}.conf-layer{z-index:40}
+.fh{position:absolute;bottom:-40px;opacity:.35;animation:rise linear forwards}
+@keyframes rise{to{transform:translate(var(--dx),-115vh) rotate(var(--rot));opacity:0}}
+.conf{position:absolute;top:-30px;animation:fall ease-in forwards}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--rot))}}
+@media (prefers-reduced-motion:reduce){.photo-wrap,.fh{animation-duration:12s}}
